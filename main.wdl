@@ -62,7 +62,7 @@ task manta {
   runtime {
     docker: "mgibio/manta_somatic-cwl:1.6.0"
     cpu: cores
-    ram: "24GB"
+    ram: "16GB"
     bootDiskSizeGb: 10
     disks: "local-disk ~{size_needed_gb} SSD"
   }
