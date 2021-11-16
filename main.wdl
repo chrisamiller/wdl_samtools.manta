@@ -74,7 +74,7 @@ task manta {
     --referenceFasta ~{reference} \
     --tumorBam ~{tumor_bam} \
     --runDir $PWD \
-    && /usr/bin/python runWorkflow.py -m local \
+    && /usr/bin/python runWorkflow.py -m local -g 8 \
     -j ~{cores}
   >>>
   output {
