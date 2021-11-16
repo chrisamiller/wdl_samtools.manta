@@ -55,7 +55,7 @@ task manta {
     Boolean non_wgs = false
     Boolean output_contigs = false
   }
-  Int cores = 4
+  Int cores = 1
   Float ref_size = size([reference, reference_fai, reference_dict], "GB")
   Float bam_size = size([tumor_bam, tumor_bam_bai], "GB")
   Int size_needed_gb = 10 + round(ref_size + bam_size)
