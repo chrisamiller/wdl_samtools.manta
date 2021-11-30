@@ -1,0 +1,10 @@
+{
+  "wf.tumor_bam": "/storage1/fs1/timley/Active/aml_ppg/analysis/ppg/saimukund/MGI/WDL/Inputs/tumor.bam",
+  "wf.tumor_bam_bai": "/storage1/fs1/timley/Active/aml_ppg/analysis/ppg/saimukund/MGI/WDL/Inputs/tumor.bam.bai",
+  "wf.output_filename_tumor": "tumor.filtered.sorted.bam",
+  "wf.fusion_sites": "/storage1/fs1/timley/Active/aml_ppg/analysis/ppg/saimukund/MGI/WDL/Inputs/sites_merged.bed",
+  "wf.manta_config": "/storage1/fs1/timley/Active/aml_ppg/analysis/ppg/saimukund/MGI/WDL/Inputs/configManta_1.py.ini",
+  "wf.reference": "/storage1/fs1/bga/Active/gmsroot/gc2560/core/model_data/2887491634/build21f22873ebe0486c8e6f69c15435aa96/all_sequences.fa",
+  "wf.reference_fai": "/storage1/fs1/bga/Active/gmsroot/gc2560/core/model_data/2887491634/build21f22873ebe0486c8e6f69c15435aa96/all_sequences.fa.fai",
+  "wf.reference_dict": "/storage1/fs1/bga/Active/gmsroot/gc2560/core/model_data/2887491634/build21f22873ebe0486c8e6f69c15435aa96/all_sequences.dict"
+}
