@@ -7,7 +7,6 @@ task samtools {
   input {
     File tumor_bam
     File tumor_bam_bai
-    String output_filename_tumor
     File fusion_sites
     File reference
     File reference_fai
@@ -30,8 +29,8 @@ task samtools {
     samtools view -T ~{reference} -H ~{tumor_bam} > tmp.sam
     cat ~{fusion_sites} | while read chr start stop ; do samtools view -T ~{reference} ~{tumor_bam} $chr:$start-$stop >> input.sam ; done
     sort -S 8G input.sam | uniq >> tmp.sam
-    samtools sort -O bam -o ~{output_filename_tumor} tmp.sam
-    samtools index ~{output_filename_tumor}
+    samtools sort -O bam -o tumor.filtered.sorted.bam tmp.sam
+    samtools index tumor.filtered.sorted.bam
     rm tmp.sam
     rm input.sam
   >>>
@@ -104,7 +103,6 @@ workflow wf {
   input {
     File tumor_bam
     File tumor_bam_bai
-    String output_filename_tumor
     File fusion_sites
     File manta_config
     File reference
@@ -117,7 +115,6 @@ workflow wf {
     input:
     tumor_bam=tumor_bam,
     tumor_bam_bai=tumor_bam_bai,
-    output_filename_tumor=output_filename_tumor,
     fusion_sites=fusion_sites,
     reference=reference,
     reference_fai=reference_fai
