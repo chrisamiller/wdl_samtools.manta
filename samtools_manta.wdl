@@ -15,7 +15,7 @@ task samtools {
   Float cram_size = size([tumor_cram, tumor_cram_index], "GB")
   Float regions_size = size([fusion_sites], "GB")
   Float ref_size = size([reference,reference_fai], "GB")
-  Int size_needed_gb = 10 + round(cram_size + regions_size + ref_size)
+  Int size_needed_gb = 10 + 2 * round(cram_size + regions_size + ref_size)
   runtime {
     memory: "16GB"
     cpu: cores
@@ -63,7 +63,7 @@ task manta {
   Int cores = 4
   Float ref_size = size([reference, reference_fai, reference_dict], "GB")
   Float bam_size = size([tumor_bam, tumor_bam_bai], "GB")
-  Int size_needed_gb = 10 + round(ref_size + bam_size)
+  Int size_needed_gb = 10 + 2 * round(ref_size + bam_size)
   runtime {
     docker: "mgibio/manta_somatic-cwl:1.6.0"
     cpu: cores
