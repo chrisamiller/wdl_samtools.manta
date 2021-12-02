@@ -133,4 +133,8 @@ workflow wf {
     non_wgs=manta_non_wgs,
     output_contigs=manta_output_contigs
   }
+  output {
+    File all_candidates = manta.all_candidates
+    File all_candidates_tbi = manta.all_candidates_tbi
+  }
 }
