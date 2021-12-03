@@ -11,7 +11,7 @@ task samtools {
     File reference
     File reference_fai
   }
-  Int cores = 4
+  Int cores = 1
   Float cram_size = size([tumor_cram, tumor_cram_index], "GB")
   Float regions_size = size([fusion_sites], "GB")
   Float ref_size = size([reference,reference_fai], "GB")
@@ -19,6 +19,7 @@ task samtools {
   runtime {
     memory: "16GB"
     cpu: cores
+    preemptible: 1
     docker: "chrisamiller/docker-genomic-analysis:latest"
     disks: "local-disk ~{size_needed_gb} SSD"
   }
@@ -67,6 +68,7 @@ task manta {
   runtime {
     docker: "mgibio/manta_somatic-cwl:1.6.0"
     cpu: cores
+    preemptible: 1
     memory: "24GB"
     bootDiskSizeGb: 10
     disks: "local-disk ~{size_needed_gb} SSD"
