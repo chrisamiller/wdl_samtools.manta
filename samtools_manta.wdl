@@ -37,8 +37,8 @@ task samtools {
     sort -S 8G input.sam | uniq >> tmp.sam
     samtools sort -O bam -o tumor.filtered.sorted.bam tmp.sam
     samtools index tumor.filtered.sorted.bam
-    #rm tmp.sam
-    #rm input.sam
+    rm tmp.sam
+    rm input.sam
   >>>
   output {
     File sorted_bam_tumor = "tumor.filtered.sorted.bam"
