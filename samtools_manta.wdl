@@ -30,17 +30,21 @@ task samtools {
     ln -s ~{tumor_cram} tumor.cram
     ln -s ~{tumor_cram_index} tumor.crai
     ln -s ~{tumor_cram_index} tumor.cram.crai
+    samtools flagstat tumor.cram > tumor.flagstat
+    samtools view -T ~{reference} tumor.cram | head -n10 > subset_tumor_first_10_lines.sam
     samtools view -T ~{reference} -H tumor.cram > tmp.sam
     cat ~{fusion_sites} | while read chr start stop ; do samtools view -T ~{reference} tumor.cram $chr:$start-$stop >> input.sam ; done
     sort -S 8G input.sam | uniq >> tmp.sam
     samtools sort -O bam -o tumor.filtered.sorted.bam tmp.sam
     samtools index tumor.filtered.sorted.bam
-    rm tmp.sam
-    rm input.sam
+    #rm tmp.sam
+    #rm input.sam
   >>>
   output {
     File sorted_bam_tumor = "tumor.filtered.sorted.bam"
     File sorted_bam_tumor_bai = "tumor.filtered.sorted.bam.bai"
+    File tumor_flagstat = "tumor.flagstat"
+    File tumor_subset = "subset_tumor_first_10_lines.sam"
   }
 }
 
@@ -138,5 +142,7 @@ workflow wf {
   output {
     File all_candidates = manta.all_candidates
     File all_candidates_tbi = manta.all_candidates_tbi
+    File tumor_flagstat = samtools.tumor_flagstat
+    File tumor_subset = samtools.tumor_subset
   }
 }
