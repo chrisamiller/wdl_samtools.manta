@@ -22,6 +22,7 @@ task samtools {
     preemptible: 1
     docker: "chrisamiller/docker-genomic-analysis:latest"
     disks: "local-disk ~{size_needed_gb} SSD"
+    bootDiskSizeGb: size_needed_gb
   }
   command <<<
     set -o pipefail
@@ -73,7 +74,7 @@ task manta {
     cpu: cores
     preemptible: 1
     memory: "24GB"
-    bootDiskSizeGb: 10
+    bootDiskSizeGb: size_needed_gb
     disks: "local-disk ~{size_needed_gb} SSD"
   }
   command <<<
