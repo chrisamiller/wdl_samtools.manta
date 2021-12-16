@@ -140,6 +140,8 @@ workflow wf {
     output_contigs=manta_output_contigs
   }
   output {
+    File sorted_bam_tumor = samtools.sorted_bam_tumor
+    File sorted_bam_tumor_bai = samtools.sorted_bam_tumor_bai
     File all_candidates = manta.all_candidates
     File all_candidates_tbi = manta.all_candidates_tbi
     File tumor_flagstat = samtools.tumor_flagstat
