@@ -1,0 +1,8 @@
+version: 0.1
+tools:
+  - subclass: WDL
+    primaryDescriptorPath: samtools_manta.wdl
+    testParameterFiles: inputs.json
+    authors:
+      - name: Sai Mukund Ramakrishnan
+        email: saimukund@wustl.edu
